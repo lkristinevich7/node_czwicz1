@@ -2,7 +2,7 @@
 var arr = [];
 
 exports.addTrainings= (training)=>{
-    arr.append(training)
+    arr.push(training)
 }
 
 exports.getAllTrainings= ()=>{
