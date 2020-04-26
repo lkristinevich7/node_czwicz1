@@ -1,3 +1,8 @@
+//Baza danych
+const mongoose = require('mongoose') //dostęp do bazy i operacje bezdanowe
+require('dotenv').config()  // obsługa pliku konfiguracyjnego .env
+
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -21,7 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/index', indexRouter);
 app.use('/registrationFile', registration )////!!!!!
 app.use('/trainingsList', list)
 
@@ -40,5 +45,13 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+//BD
+mongoose.connect(process.env.MONGO_DB_URL, {useNewUrlParser: true}) 
+const dbConnection = mongoose.connection //zapisujemu connection do stalej dla dalszych operacji
+dbConnection.on('error', (error) => console.error(error)) //reakcja na dowolny blad
+dbConnection.once('open', ()=> console.log('Połączono z baza danych')) // w momncie nawiazania polaczenia wykonaj funkcję 
+
 
 module.exports = app;

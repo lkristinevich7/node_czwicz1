@@ -8,3 +8,6 @@ exports.addTrainings= (training)=>{
 exports.getAllTrainings= ()=>{
     return arr
 }
+
+
+
