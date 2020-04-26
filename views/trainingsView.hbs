@@ -1,4 +1,7 @@
-<p>{{name}}</p>
-<p>{{code}}</p>
+<ul>
+{{#each training}}
+    <li>{{code}} {{name}} {{price}}</li>
+</ul>
+{{/each}}
 
 <a href="/">Back</a>

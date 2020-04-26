@@ -8,7 +8,7 @@ router.get("/", (req, res)=>{
   res.render('registrationFile', {title: 'course registration'})
 }) //??
 
-router.post('/saveTraining', (req, res)=>{
+router.post('/saveTraining', (req, res)=>{ ///!!!!
     const{name, code, price, days}= req.body;//pobieram te pola z obiektu zadanai
     //walidacja, zapis do bazy
     const training = {name: name, code: code, price: price, days: days}
